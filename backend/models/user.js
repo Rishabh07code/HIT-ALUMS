@@ -17,9 +17,15 @@ const userSchema = new mongoose.Schema({
   // Sirf Alumni ke liye fields
   company: { type: String, default: '' },
   designation: { type: String, default: '' },
+
+  connections: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  sentRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  receivedRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   
   // Verification (PPT me mentioned tha)
   isVerified: { type: Boolean, default: false },
 }, { timestamps: true });
+
+
 
 module.exports = mongoose.model("User", userSchema);

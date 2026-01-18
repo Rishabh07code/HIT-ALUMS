@@ -9,6 +9,7 @@ const { Server } = require("socket.io");
 const authRoute = require("./routes/auth");
 const jobsRoute = require("./routes/jobs");
 const eventsRoute = require("./routes/events");
+const networkRoute = require("./routes/network");
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,10 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/api/auth", authRoute);
 app.use("/api/jobs", jobsRoute);
 app.use("/api/events", eventsRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/jobs", jobsRoute);
+app.use("/api/events", eventsRoute);
+app.use("/api/network", networkRoute);
 
 // --- MAIN CHANGE YAHAN HAI ---
 const io = new Server(server, {
